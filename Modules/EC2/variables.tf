@@ -2,16 +2,8 @@ variable "Key_pair" {
   default = "Cloudbreathe"
 }
 
-variable "region" {
-  default = "ap-south-1"
-}
-
 variable "name" {
   default = "Core Music"
-}
-
-variable "ami-id" {
-  default = "ami-0d758c1134823146a"
 }
 
 variable "RDS-User" {
@@ -24,4 +16,17 @@ variable "RDS-Password" {
 
 variable "private_key_path" {
   default = "Cloudbreathe.pem"
+}
+
+## Assigned at Module level
+variable "ec2SG" {}
+
+variable "subnet-id" {}
+
+variable "ami-id" {
+  default = "ami-0d758c1134823146a"
+}
+
+variable "instance-type" {
+  default = "t2.micro"
 }
