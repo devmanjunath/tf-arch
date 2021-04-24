@@ -1,4 +1,4 @@
-cat <<EOF > /tmp/wordpress/wp-config.php
+cat > /tmp/wordpress/wp-config.php <<EOF
 <?php
 define( 'DB_NAME', '$wp_db' );
 define( 'DB_USER', '$wp_user' );
@@ -16,4 +16,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         define( 'ABSPATH', __DIR__ . '/' );
 }
 require_once ABSPATH . 'wp-settings.php';
+
 EOF

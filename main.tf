@@ -14,9 +14,10 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "tfcb2021"
-    region = "ap-south-1"
-    key    = "terraform.dev.tfstate"
+    bucket  = "tfcb2021"
+    region  = "ap-south-1"
+    key     = "terraform.tfstate"
+    encrypt = true
   }
 }
 
@@ -28,8 +29,7 @@ module "ec2" {
   source = "./Modules/EC2"
 
   ## Variables for EC2
-  ami-id        = var.ami-id == "" ? "ami-0d758c1134823146a" : var.ami-id
-  instance-type = var.instance-type == "" ? "t2.micro" : var.instance-type
+  ami-id        = var.ami[var.environment[terraform.workspace].region]["x86"].id
   ec2SG         = [module.vpc.security_groups["ec2SG"]]
   subnet-id     = module.vpc.subnets.public[0]
 }
