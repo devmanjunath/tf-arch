@@ -4,8 +4,8 @@ resource "aws_vpc" "myVPC" {
   enable_dns_support   = true 
   enable_dns_hostnames = true
   tags = {
-    Name = "myVpc"
-    Env  = "Terraform"
+    Name = "myVpc-${terraform.workspace}"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -13,7 +13,8 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myVPC.id
 
   tags = {
-    Name = "myVPC-IGW"
+    Name = "IGW-IGW"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -25,6 +26,7 @@ resource "aws_subnet" "public-1a" {
 
   tags = {
     Name = "Public 1A-myVPC"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -36,6 +38,7 @@ resource "aws_subnet" "public-2a" {
 
   tags = {
     Name = "Public 2A-myVPC"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -46,6 +49,7 @@ resource "aws_subnet" "private-1a" {
 
   tags = {
     Name = "Private 1A-myVPC"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -56,6 +60,7 @@ resource "aws_subnet" "private-2a" {
 
   tags = {
     Name = "Private 2A-myVPC"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -69,6 +74,7 @@ resource "aws_route_table" "rt1" {
 
   tags = {
     Name = "myVPC-RT1"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -119,6 +125,7 @@ resource "aws_security_group" "ec2" {
 
   tags = {
     Name = "ec2-SG"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -145,6 +152,7 @@ resource "aws_security_group" "rds" {
 
   tags = {
     Name = "RDS-SG"
+    Env  = "${terraform.workspace}"
   }
 }
 
@@ -155,5 +163,6 @@ resource "aws_security_group" "elb" {
 
   tags = {
     Name = "elb-SG"
+    Env  = "${terraform.workspace}"
   }
 }

@@ -26,7 +26,6 @@ variable "subnet-id" {}
 
 variable "ami-id" {
   type    = string
-  default = "ami-0d758c1134823146a"
 }
 
 variable "instance-type" {

@@ -6,7 +6,7 @@ resource "aws_instance" "core_music" {
   subnet_id       = var.subnet-id
   root_block_device {
     delete_on_termination = true
-    volume_size = 8
+    volume_size           = 8
   }
 
   tags = {
